@@ -1,0 +1,20 @@
+# Copyright 2023 Philip Eklöf
+#
+# SPDX-License-Identifier: MIT
+
+[Service]
+
+# Log messages might not appear in the journal without making it unbuffered.
+Environment=PYTHONUNBUFFERED=1
+
+# You might need to set this properly, but it usually shouldn't be needed.
+#Environment=I3SOCK=/run/user/1000/i3/ipc-socket.example
+
+Type=exec
+ExecStart=%h/.local/bin/i3-event-handler
+
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
